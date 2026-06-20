@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeCraft - Professional Resume Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">📄</span>
+                    <span class="logo-text">ResumeCraft</span>
+                </div>
+            </div>
+            
+            <!-- User Profile -->
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=3b82f6&color=fff&size=80" alt="User Avatar">
+                    <div class="user-info">
+                        <span class="user-name" id="userName">John Doe</span>
+                        <span class="user-status">Pro Member</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-tab="dashboard">
+                    <span class="nav-icon">�</span>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-item" data-tab="editor">
+                    <span class="nav-icon">📝</span>
+                    <span>Resume Editor</span>
+                </button>
+                <button class="nav-item" data-tab="templates">
+                    <span class="nav-icon">🎨</span>
+                    <span>Templates</span>
+                </button>
+                <button class="nav-item" data-tab="cover-letters">
+                    <span class="nav-icon">✉️</span>
+                    <span>Cover Letters</span>
+                </button>
+                <button class="nav-item" data-tab="analytics">
+                    <span class="nav-icon">📈</span>
+                    <span>Analytics</span>
+                </button>
+                <button class="nav-item" data-tab="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Settings</span>
+                </button>
+            </nav>
+            
+            <!-- Resume Stats -->
+            <div class="resume-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Completion</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                    <span class="stat-value">75%</span>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-item-small">
+                        <span class="stat-label-small">Views</span>
+                        <span class="stat-value-small">24</span>
+                    </div>
+                    <div class="stat-item-small">
+                        <span class="stat-label-small">Downloads</span>
+                        <span class="stat-value-small">8</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Create New Button -->
+            <button class="create-new-btn" id="createNewResume">
+                <span>+</span>
+                <span>Create New Resume</span>
+            </button>
+            
+            <!-- Recent Resumes -->
+            <div class="recent-resumes">
+                <h4>Recent Resumes</h4>
+                <div class="resume-list">
+                    <div class="resume-item">
+                        <div class="resume-thumbnail">
+                            <span>📄</span>
+                        </div>
+                        <div class="resume-info">
+                            <span class="resume-name">Software Engineer</span>
+                            <span class="resume-date">2 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="resume-item">
+                        <div class="resume-thumbnail">
+                            <span>📄</span>
+                        </div>
+                        <div class="resume-info">
+                            <span class="resume-name">Product Manager</span>
+                            <span class="resume-date">Yesterday</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logout -->
+            <div class="sidebar-footer">
+                <button class="logout-btn" id="logoutBtn">
+                    <span>🚪</span>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Tab -->
+            <div class="tab-content active" id="dashboard">
+                <div class="dashboard-header">
+                    <h1>Welcome back, John!</h1>
+                    <p>Here's an overview of your resume activity</p>
+                </div>
+                
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <span class="stat-icon">📄</span>
+                        <div class="stat-info">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Total Resumes</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">👁️</span>
+                        <div class="stat-info">
+                            <span class="stat-number">156</span>
+                            <span class="stat-label">Total Views</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">⬇️</span>
+                        <div class="stat-info">
+                            <span class="stat-number">43</span>
+                            <span class="stat-label">Downloads</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">🎯</span>
+                        <div class="stat-info">
+                            <span class="stat-number">89%</span>
+                            <span class="stat-label">ATS Score</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-content">
+                    <div class="quick-actions">
+                        <button class="action-btn" id="quickCreate">
+                            <span>➕</span>
+                            <span>Create New Resume</span>
+                        </button>
+                        <button class="action-btn" id="quickTemplate">
+                            <span>🎨</span>
+                            <span>Browse Templates</span>
+                        </button>
+                        <button class="action-btn" id="quickCover">
+                            <span>✉️</span>
+                            <span>Write Cover Letter</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Editor Tab -->
+            <div class="tab-content" id="editor">
+                <div class="editor-container">
+                    <!-- Toolbar -->
+                    <div class="editor-toolbar">
+                        <div class="toolbar-left">
+                            <button class="toolbar-btn" id="undoBtn" title="Undo">
+                                <span>↶</span>
+                            </button>
+                            <button class="toolbar-btn" id="redoBtn" title="Redo">
+                                <span>↷</span>
+                            </button>
+                            <div class="toolbar-divider"></div>
+                            <button class="toolbar-btn active" id="editModeBtn" title="Edit Mode">
+                                <span>✏️</span>
+                            </button>
+                            <button class="toolbar-btn" id="previewModeBtn" title="Preview Mode">
+                                <span>👁️</span>
+                            </button>
+                        </div>
+                        <div class="toolbar-center">
+                            <div class="auto-save-indicator">
+                                <span class="save-icon">💾</span>
+                                <span class="save-text">Auto-saved</span>
+                            </div>
+                        </div>
+                        <div class="toolbar-right">
+                            <button class="toolbar-btn" id="aiSuggestBtn" title="AI Suggestions">
+                                <span>🤖</span>
+                            </button>
+                            <button class="toolbar-btn" id="spellCheckBtn" title="Spell Check">
+                                <span>✓</span>
+                            </button>
+                            <div class="toolbar-divider"></div>
+                            <button class="toolbar-btn" id="shareBtn" title="Share">
+                                <span>🔗</span>
+                            </button>
+                            <button class="toolbar-btn primary" id="downloadBtn" title="Download">
+                                <span>⬇️</span>
+                                <span>Download</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Editor Area -->
+                    <div class="editor-main">
+                        <!-- CV Preview -->
+                        <div class="cv-preview-container">
+                            <div class="cv-preview" id="cvPreview">
+                                <div class="cv-document modern" id="cvDocument">
+                                    <div class="cv-header-section">
+                                        <h1 class="cv-name" contenteditable="true">John Doe</h1>
+                                        <p class="cv-title" contenteditable="true">Senior Software Engineer</p>
+                                        <div class="cv-contact">
+                                            <span contenteditable="true">john.doe@email.com</span>
+                                            <span>•</span>
+                                            <span contenteditable="true">+1 (555) 123-4567</span>
+                                            <span>•</span>
+                                            <span contenteditable="true">San Francisco, CA</span>
+                                            <span>•</span>
+                                            <span contenteditable="true">linkedin.com/in/johndoe</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="cv-section" data-section="summary">
+                                        <h2>Professional Summary</h2>
+                                        <p contenteditable="true">Results-driven Senior Software Engineer with 8+ years of experience in full-stack development, cloud architecture, and team leadership. Proven track record of delivering scalable solutions that drive business growth. Passionate about clean code, agile methodologies, and mentoring junior developers.</p>
+                                    </div>
+                                    
+                                    <div class="cv-section" data-section="experience">
+                                        <h2>Work Experience</h2>
+                                        <div class="cv-experience-item">
+                                            <div class="exp-header">
+                                                <h3 contenteditable="true">Senior Software Engineer</h3>
+                                                <span class="exp-company" contenteditable="true">TechCorp Inc.</span>
+                                                <span class="exp-date">2020 - Present</span>
+                                            </div>
+                                            <ul class="exp-bullets">
+                                                <li contenteditable="true">Led development of microservices architecture serving 10M+ daily users</li>
+                                                <li contenteditable="true">Reduced API response time by 40% through optimization strategies</li>
+                                                <li contenteditable="true">Mentored team of 5 junior developers, improving code quality by 35%</li>
+                                                <li contenteditable="true">Implemented CI/CD pipelines reducing deployment time by 60%</li>
+                                            </ul>
+                                        </div>
+                                        <div class="cv-experience-item">
+                                            <div class="exp-header">
+                                                <h3 contenteditable="true">Software Engineer</h3>
+                                                <span class="exp-company" contenteditable="true">StartupXYZ</span>
+                                                <span class="exp-date">2017 - 2020</span>
+                                            </div>
+                                            <ul class="exp-bullets">
+                                                <li contenteditable="true">Built and maintained RESTful APIs using Python and Django</li>
+                                                <li contenteditable="true">Developed real-time data processing pipeline handling 1M+ events/day</li>
+                                                <li contenteditable="true">Collaborated with product team to define technical requirements</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="cv-section" data-section="education">
+                                        <h2>Education</h2>
+                                        <div class="cv-education-item">
+                                            <h3 contenteditable="true">Master of Science in Computer Science</h3>
+                                            <p class="edu-school" contenteditable="true">Stanford University</p>
+                                            <span class="edu-date">2015 - 2017</span>
+                                        </div>
+                                        <div class="cv-education-item">
+                                            <h3 contenteditable="true">Bachelor of Science in Computer Science</h3>
+                                            <p class="edu-school" contenteditable="true">UC Berkeley</p>
+                                            <span class="edu-date">2011 - 2015</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="cv-section" data-section="skills">
+                                        <h2>Skills</h2>
+                                        <div class="skills-grid">
+                                            <div class="skill-item">
+                                                <span class="skill-name" contenteditable="true">Python</span>
+                                                <div class="skill-bar">
+                                                    <div class="skill-fill" style="width: 95%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <span class="skill-name" contenteditable="true">JavaScript</span>
+                                                <div class="skill-bar">
+                                                    <div class="skill-fill" style="width: 90%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <span class="skill-name" contenteditable="true">React</span>
+                                                <div class="skill-bar">
+                                                    <div class="skill-fill" style="width: 85%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <span class="skill-name" contenteditable="true">AWS</span>
+                                                <div class="skill-bar">
+                                                    <div class="skill-fill" style="width: 80%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <span class="skill-name" contenteditable="true">Docker</span>
+                                                <div class="skill-bar">
+                                                    <div class="skill-fill" style="width: 75%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <span class="skill-name" contenteditable="true">Kubernetes</span>
+                                                <div class="skill-bar">
+                                                    <div class="skill-fill" style="width: 70%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Properties Panel -->
+                        <div class="properties-panel" id="propertiesPanel">
+                            <div class="panel-header">
+                                <h3>Properties</h3>
+                                <button class="close-panel" id="closePanelBtn">×</button>
+                            </div>
+                            <div class="panel-content">
+                                <div class="panel-section">
+                                    <h4>Template</h4>
+                                    <div class="template-options">
+                                        <button class="template-option active" data-template="modern">Modern</button>
+                                        <button class="template-option" data-template="classic">Classic</button>
+                                        <button class="template-option" data-template="creative">Creative</button>
+                                    </div>
+                                </div>
+                                <div class="panel-section">
+                                    <h4>Font</h4>
+                                    <select class="font-select" id="fontFamily">
+                                        <option value="Inter">Inter</option>
+                                        <option value="Playfair Display">Playfair Display</option>
+                                        <option value="Arial">Arial</option>
+                                        <option value="Georgia">Georgia</option>
+                                    </select>
+                                </div>
+                                <div class="panel-section">
+                                    <h4>Font Size</h4>
+                                    <div class="font-size-controls">
+                                        <button class="size-btn" data-size="decrease">-</button>
+                                        <span class="size-value">12px</span>
+                                        <button class="size-btn" data-size="increase">+</button>
+                                    </div>
+                                </div>
+                                <div class="panel-section">
+                                    <h4>Accent Color</h4>
+                                    <div class="color-picker">
+                                        <button class="color-option active" data-color="#3b82f6" style="background: #3b82f6"></button>
+                                        <button class="color-option" data-color="#10b981" style="background: #10b981"></button>
+                                        <button class="color-option" data-color="#f59e0b" style="background: #f59e0b"></button>
+                                        <button class="color-option" data-color="#ef4444" style="background: #ef4444"></button>
+                                        <button class="color-option" data-color="#8b5cf6" style="background: #8b5cf6"></button>
+                                    </div>
+                                </div>
+                                <div class="panel-section">
+                                    <h4>Sections</h4>
+                                    <div class="section-toggles">
+                                        <label class="section-toggle">
+                                            <input type="checkbox" checked data-section="summary">
+                                            <span>Summary</span>
+                                        </label>
+                                        <label class="section-toggle">
+                                            <input type="checkbox" checked data-section="experience">
+                                            <span>Experience</span>
+                                        </label>
+                                        <label class="section-toggle">
+                                            <input type="checkbox" checked data-section="education">
+                                            <span>Education</span>
+                                        </label>
+                                        <label class="section-toggle">
+                                            <input type="checkbox" checked data-section="skills">
+                                            <span>Skills</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Templates Tab -->
+            <div class="tab-content" id="templates">
+                <div class="templates-header">
+                    <h1>Resume Templates</h1>
+                    <p>Choose from our professionally designed templates</p>
+                </div>
+                <div class="templates-grid">
+                    <div class="template-card" data-template="modern">
+                        <div class="template-preview">
+                            <div class="preview-document modern">
+                                <div class="preview-header"></div>
+                                <div class="preview-body"></div>
+                            </div>
+                        </div>
+                        <div class="template-info">
+                            <h3>Modern</h3>
+                            <p>Clean and professional with modern typography</p>
+                            <button class="use-template-btn">Use Template</button>
+                        </div>
+                    </div>
+                    <div class="template-card" data-template="classic">
+                        <div class="template-preview">
+                            <div class="preview-document classic">
+                                <div class="preview-header"></div>
+                                <div class="preview-body"></div>
+                            </div>
+                        </div>
+                        <div class="template-info">
+                            <h3>Classic</h3>
+                            <p>Traditional design with serif fonts</p>
+                            <button class="use-template-btn">Use Template</button>
+                        </div>
+                    </div>
+                    <div class="template-card" data-template="creative">
+                        <div class="template-preview">
+                            <div class="preview-document creative">
+                                <div class="preview-header"></div>
+                                <div class="preview-body"></div>
+                            </div>
+                        </div>
+                        <div class="template-info">
+                            <h3>Creative</h3>
+                            <p>Bold design for creative professionals</p>
+                            <button class="use-template-btn">Use Template</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cover Letters Tab -->
+            <div class="tab-content" id="cover-letters">
+                <div class="cover-letters-header">
+                    <h1>Cover Letters</h1>
+                    <p>Create professional cover letters for your applications</p>
+                </div>
+                <div class="cover-letters-content">
+                    <div class="cover-letter-form">
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" id="coverCompany" placeholder="Enter company name">
+                        </div>
+                        <div class="form-group">
+                            <label>Job Title</label>
+                            <input type="text" id="coverJobTitle" placeholder="Enter job title">
+                        </div>
+                        <div class="form-group">
+                            <label>Job Description</label>
+                            <textarea id="coverJobDesc" rows="4" placeholder="Paste job description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Tone</label>
+                            <select id="coverTone">
+                                <option value="professional">Professional</option>
+                                <option value="enthusiastic">Enthusiastic</option>
+                                <option value="formal">Formal</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary" id="generateCoverLetter">Generate Cover Letter</button>
+                    </div>
+                    <div class="cover-letter-preview" id="coverLetterPreview">
+                        <div class="preview-placeholder">
+                            <span>📝</span>
+                            <p>Your generated cover letter will appear here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Analytics Tab -->
+            <div class="tab-content" id="analytics">
+                <div class="analytics-header">
+                    <h1>Analytics</h1>
+                    <p>Track your resume performance</p>
+                </div>
+                <div class="analytics-content">
+                    <div class="analytics-chart">
+                        <h3>Views Over Time</h3>
+                        <div class="chart-placeholder">
+                            <span>📈</span>
+                            <p>Analytics chart will appear here</p>
+                        </div>
+                    </div>
+                    <div class="analytics-stats">
+                        <div class="analytics-stat">
+                            <span class="stat-number">156</span>
+                            <span class="stat-label">Total Views</span>
+                        </div>
+                        <div class="analytics-stat">
+                            <span class="stat-number">43</span>
+                            <span class="stat-label">Downloads</span>
+                        </div>
+                        <div class="analytics-stat">
+                            <span class="stat-number">89%</span>
+                            <span class="stat-label">ATS Score</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings Tab -->
+            <div class="tab-content" id="settings">
+                <div class="settings-header">
+                    <h1>Settings</h1>
+                    <p>Manage your account preferences</p>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-section">
+                        <h3>Account</h3>
+                        <div class="setting-item">
+                            <label>Username</label>
+                            <input type="text" value="johndoe" readonly>
+                        </div>
+                        <div class="setting-item">
+                            <label>Email</label>
+                            <input type="email" value="john.doe@email.com" readonly>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Preferences</h3>
+                        <div class="setting-item">
+                            <label>Default Template</label>
+                            <select>
+                                <option>Modern</option>
+                                <option>Classic</option>
+                                <option>Creative</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label>Auto-save</label>
+                            <input type="checkbox" checked>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Floating AI Assistant -->
+        <button class="ai-assistant-btn" id="aiAssistantBtn">
+            <span>🤖</span>
+        </button>
+        
+        <!-- Toast Notifications -->
+        <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
